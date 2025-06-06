@@ -1,3 +1,5 @@
+[![Release](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/release-please.yml/badge.svg)](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/release-please.yml)
+
 # OpenSCD API
 
 This package defines a common set of APIs, types, and interfaces for use by [OpenSCD](https://openscd.org) distributions and plugins.  
