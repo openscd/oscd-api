@@ -1,6 +1,6 @@
 {
   "name": "@omicronenergy/oscd-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "OpenSCD API for IEC 61850 SCL files",
   "type": "module",
   "main": "./index.js",
@@ -10,7 +10,8 @@
     "format": "eslint . --fix && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "test": "npm run build && wtr --coverage",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
-    "build": "npx rimraf dist && tsc --pretty"
+    "build": "npx rimraf dist && tsc --pretty",
+    "doc": "npx rimraf doc && typedoc --out doc index.ts"
   },
   "repository": {
     "type": "git",
@@ -35,15 +36,16 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.32.1",
-    "prettier": "^3.5.3",
-    "typescript": "^5.8.3",
     "@open-wc/testing": "3.2.2",
     "@types/mocha": "^10.0.8",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.32.1",
     "@web/test-runner": "0.19.0",
     "concurrently": "^9.0.1",
     "eslint": "^9.11.1",
-    "rimraf": "^3.0.2"
+    "prettier": "^3.5.3",
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.28.5",
+    "typescript": "^5.8.3"
   }
 }
