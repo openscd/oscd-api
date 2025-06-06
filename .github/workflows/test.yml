@@ -1,0 +1,17 @@
+name: Test
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-node-env
+
+      - name: Build
+        run: npm run-script build
+
+      - name: Run unit tests
+        run: npm run-script test

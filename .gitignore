@@ -1,0 +1,15 @@
+node_modules
+*.js
+*.map
+*.d.ts
+*.tsbuildinfo
+
+## editors
+/.idea
+/.vscode
+
+## build artifacts
+dist
+coverage
+
+
