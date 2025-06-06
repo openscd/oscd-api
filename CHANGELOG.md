@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.4](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.3...oscd-api-v0.0.4) (2025-06-06)
+
+
+### Features
+
+* add api + interfaces ([7253d02](https://github.com/OMICRONEnergyOSS/oscd-api/commit/7253d02905ad011cdb736520036be3c9d415f32e))
+* add generated docs to github pages ([3242615](https://github.com/OMICRONEnergyOSS/oscd-api/commit/3242615d0d7fc5f76822363c3d751f1ea69cbf60))
+
 ## [0.0.3](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.2...oscd-api-v0.0.3) (2025-06-06)
 
 

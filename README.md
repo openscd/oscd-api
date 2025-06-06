@@ -7,7 +7,7 @@ It does **not** contain any business logic or implementation—only the shared c
 
 - **For Plugin Developers:**  
   Provides the types and event interfaces needed to build plugins that integrate seamlessly with OpenSCD core.  
-  See [docs/plugin-api.md](docs/plugin-api.md) for a detailed description of the plugin API.
+  See [docs/plugin-api.md](https://github.com/OMICRONEnergyOSS/oscd-api/blob/main/docs/plugin-api.md) for a detailed description of the plugin API.
 
 - **For Distribution Builders:**  
   Supplies the types and interfaces for the OpenSCD root element and other extension points.  
@@ -15,7 +15,9 @@ It does **not** contain any business logic or implementation—only the shared c
 
 ## Documentation
 
-- [Plugin API](docs/plugin-api.md):  
+- Interface & Type documentation can be found [here](https://omicronenergyoss.github.io/oscd-api/)
+
+- [Plugin API](https://github.com/OMICRONEnergyOSS/oscd-api/blob/main/docs/plugin-api.md):  
   Comprehensive guide for plugin authors, including property contracts, event types, and theming.
 
 - _Additional documentation (e.g., for the OpenSCD root element and `plugin.json` constraints) will be added soon._
