@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Node Environment
         run: npm ci
-      - name: Publish to NPM
+      - name: Publish to NPMJS.org
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
