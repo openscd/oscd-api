@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.6...oscd-api-v0.0.7) (2025-06-07)
+
+
+### Features
+
+* updated npm token reference ([e43d4c9](https://github.com/OMICRONEnergyOSS/oscd-api/commit/e43d4c9335c75578a1b00587b70c743f82b1affb))
+
 ## [0.0.6](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.5...oscd-api-v0.0.6) (2025-06-07)
 
 
