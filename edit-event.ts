@@ -1,4 +1,4 @@
-import { EditV2 } from "./editv2.js";
+import { EditV2 } from './editv2.js';
 
 export type EditDetailV2<E extends EditV2 = EditV2> = {
   edit: E;
@@ -19,7 +19,7 @@ export function newEditEventV2<E extends EditV2>(
   edit: E,
   options?: EditEventOptions,
 ): EditEventV2<E> {
-  return new CustomEvent<EditDetailV2<E>>("oscd-edit-v2", {
+  return new CustomEvent<EditDetailV2<E>>('oscd-edit-v2', {
     composed: true,
     bubbles: true,
     detail: { ...options, edit },
@@ -28,6 +28,6 @@ export function newEditEventV2<E extends EditV2>(
 
 declare global {
   interface ElementEventMap {
-    ["oscd-edit-v2"]: EditEventV2;
+    ['oscd-edit-v2']: EditEventV2;
   }
 }

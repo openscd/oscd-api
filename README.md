@@ -1,4 +1,4 @@
-[![Release](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/release-please.yml/badge.svg)](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/release-please.yml)
+[![Tests](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/test.yml/badge.svg)](https://github.com/OMICRONEnergyOSS/oscd-api/actions/workflows/test.yml) ![NPM Version](https://img.shields.io/npm/v/@omicronenergy/oscd-api)
 
 # OpenSCD API
 

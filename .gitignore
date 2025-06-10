@@ -3,6 +3,7 @@ node_modules
 *.map
 *.d.ts
 *.tsbuildinfo
+!commitlint.config.js
 
 ## editors
 /.idea

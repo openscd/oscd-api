@@ -10,15 +10,15 @@ export {
   isRemove,
   isSetAttributes,
   isSetTextContent,
-} from "./editv2.js";
+} from './editv2.js';
 
-export { Edit, Update, isEdit } from "./editv1.js";
+export { Edit, Update, isEdit } from './editv1.js';
 
 export type {
   Commit,
   CommitOptions,
   Transactor,
   TransactedCallback,
-} from "./Transactor.js";
+} from './Transactor.js';
 
-export { newEditEventV2 } from "./edit-event.js";
+export { newEditEventV2 } from './edit-event.js';

@@ -66,7 +66,7 @@ export function isInsert(edit: EditV2): edit is Insert {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isEditV2(edit: any): edit is EditV2 {
-  if (isComplex(edit)) return !edit.some((e) => !isEditV2(e));
+  if (isComplex(edit)) return !edit.some(e => !isEditV2(e));
 
   return (
     isSetAttributes(edit) ||

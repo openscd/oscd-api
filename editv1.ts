@@ -1,4 +1,4 @@
-import { isSetAttributes } from "./editv2";
+import { isSetAttributes } from './editv2';
 
 /** Intent to `parent.insertBefore(node, reference)` */
 export type Insert = {
@@ -37,7 +37,7 @@ export function isInsert(edit: Edit): edit is Insert {
 export function isNamespaced(
   value: AttributeValue,
 ): value is NamespacedAttributeValue {
-  return value !== null && typeof value !== "string";
+  return value !== null && typeof value !== 'string';
 }
 
 export function isUpdate(edit: Edit): edit is Update {
@@ -57,7 +57,7 @@ export type EditEvent<E extends Edit = Edit> = CustomEvent<E>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isEdit(edit: any): edit is Edit {
-  if (isComplex(edit)) return !edit.some((e) => !isEdit(e));
+  if (isComplex(edit)) return !edit.some(e => !isEdit(e));
 
   return (
     !isSetAttributes(edit) &&
