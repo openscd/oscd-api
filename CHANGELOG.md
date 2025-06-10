@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.3...oscd-api-v0.0.4) (2025-06-10)
+
+
+### Bug Fixes
+
+* **workflows/release-please:** publish to npmjs registry ([8835cad](https://github.com/OMICRONEnergyOSS/oscd-api/commit/8835cadfa552733c9ec0d5cdb07ffaf14bda5aa4))
+
 ## [0.0.3](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.2...oscd-api-v0.0.3) (2025-06-09)
 
 
