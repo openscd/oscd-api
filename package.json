@@ -3,15 +3,16 @@
   "version": "0.0.9",
   "description": "OpenSCD API for IEC 61850 SCL files",
   "type": "module",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./oscd-api.js",
+  "types": "./oscd-api.d.ts",
   "scripts": {
     "lint": "eslint . && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint . --fix && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "test": "npm run build && wtr --coverage",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
     "build": "npx rimraf dist && tsc --pretty",
-    "doc": "npx rimraf doc && typedoc --out doc index.ts"
+    "doc": "npx rimraf doc && typedoc --out doc index.ts",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,8 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@open-wc/testing": "3.2.2",
     "@types/mocha": "^10.0.8",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
@@ -43,9 +46,100 @@
     "@web/test-runner": "0.19.0",
     "concurrently": "^9.0.1",
     "eslint": "^9.11.1",
+    "eslint-plugin-tsdoc": "^0.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
     "prettier": "^3.5.3",
     "rimraf": "^3.0.2",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "lib": [
+        "es2018",
+        "dom"
+      ]
+    },
+    "extends": [
+      "@open-wc",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "eslint-plugin-tsdoc"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "allowSeparatedGroups": true
+        }
+      ],
+      "class-methods-use-this": [
+        "error",
+        {
+          "exceptMethods": [
+            "locale"
+          ]
+        }
+      ],
+      "@typescript-eslint/no-explicit-any": [
+        "error",
+        {
+          "ignoreRestArgs": true
+        }
+      ],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/*.test.ts",
+            "**/*.spec.ts"
+          ]
+        }
+      ],
+      "curly": [
+        "error",
+        "all"
+      ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "destructuredArrayIgnorePattern": "^_"
+        }
+      ],
+      "import/no-unresolved": "off",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.spec.ts",
+          "**/*.test.ts"
+        ],
+        "rules": {
+          "no-unused-expressions": "off"
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "lint-staged": {
+    "*.": "npm run format"
   }
 }
