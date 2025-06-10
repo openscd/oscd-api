@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.9...oscd-api-v0.0.10) (2025-06-10)
+
+
+### Features
+
+* add commit guards ([2b59c42](https://github.com/OMICRONEnergyOSS/oscd-api/commit/2b59c4282402a4d755b8fd95285be1165291263f))
+
 ## [0.0.9](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.8...oscd-api-v0.0.9) (2025-06-10)
 
 
