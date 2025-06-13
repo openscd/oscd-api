@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.9...oscd-api-v0.0.10) (2025-06-13)
+
+
+### Bug Fixes
+
+* (workflows/release-please): npm package contains no files ([91c55e4](https://github.com/OMICRONEnergyOSS/oscd-api/commit/91c55e47192fc8a65c85508492fba0e1c9a6c8b5))
+
 ## [0.0.9](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.8...oscd-api-v0.0.9) (2025-06-10)
 
 
