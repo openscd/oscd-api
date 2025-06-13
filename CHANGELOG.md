@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.11](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.10...oscd-api-v0.0.11) (2025-06-13)
+
+
+### Features
+
+* add api + interfaces ([7253d02](https://github.com/OMICRONEnergyOSS/oscd-api/commit/7253d02905ad011cdb736520036be3c9d415f32e))
+* add generated docs to github pages ([f7fea8d](https://github.com/OMICRONEnergyOSS/oscd-api/commit/f7fea8d559f59b538270d10892495579a3de5729))
+
+
+### Bug Fixes
+
+* (workflows/release-please): npm package contains no files ([5866856](https://github.com/OMICRONEnergyOSS/oscd-api/commit/5866856cb6edcd3515a2dfe550a895e312d5d5d6))
+
 ## [0.0.9](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.8...oscd-api-v0.0.9) (2025-06-10)
 
 
