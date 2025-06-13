@@ -1,17 +1,17 @@
 {
   "name": "@omicronenergy/oscd-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "OpenSCD API for IEC 61850 SCL files",
   "type": "module",
-  "main": "./oscd-api.js",
-  "types": "./oscd-api.d.ts",
+  "main": "./dist/oscd-api.js",
+  "types": "./dist/oscd-api.d.ts",
   "scripts": {
     "lint": "eslint . && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint . --fix && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "test": "npm run build && wtr --coverage",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
     "build": "npx rimraf dist && tsc --pretty",
-    "doc": "npx rimraf doc && typedoc --out doc index.ts",
+    "doc": "npx rimraf doc && typedoc --out doc oscd-api.ts",
     "prepare": "husky"
   },
   "repository": {
