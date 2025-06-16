@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.12](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.11...oscd-api-v0.0.12) (2025-06-16)
+
+
+### Features
+
+* add convertEdit ([bfce8e4](https://github.com/OMICRONEnergyOSS/oscd-api/commit/bfce8e4caeab6a93099d5922bccfc431f2c29373))
+
 ## [0.0.11](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.10...oscd-api-v0.0.11) (2025-06-13)
 
 
