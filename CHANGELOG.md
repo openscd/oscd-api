@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.14](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.13...oscd-api-v0.0.14) (2025-06-16)
+
+
+### Bug Fixes
+
+* prevent doc, coverage & commitlint.config.js from npm package ([17416a8](https://github.com/OMICRONEnergyOSS/oscd-api/commit/17416a8c98481a399ccb088ee1d9632ed78be376))
+
 ## [0.0.13](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.12...oscd-api-v0.0.13) (2025-06-16)
 
 
