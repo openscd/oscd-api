@@ -31,7 +31,9 @@
   "files": [
     "**/*.js",
     "**/*.js.map",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "!**/*.spec.*",
+    "commitlint.config.js"
   ],
   "dependencies": {
     "tslib": "^2.4.0"
