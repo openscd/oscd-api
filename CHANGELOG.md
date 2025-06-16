@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.13](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.12...oscd-api-v0.0.13) (2025-06-16)
+
+
+### Bug Fixes
+
+* prevent built test files from being bundled in npm package ([a7f8ce0](https://github.com/OMICRONEnergyOSS/oscd-api/commit/a7f8ce0bd96c1419289e813748591fca6376b420))
+
 ## [0.0.12](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.11...oscd-api-v0.0.12) (2025-06-16)
 
 
