@@ -1,4 +1,4 @@
-import { isSetAttributes } from './editv2';
+import { isSetAttributes } from './editv2.js';
 
 /** Intent to `parent.insertBefore(node, reference)` */
 export type Insert = {
@@ -57,7 +57,9 @@ export type EditEvent<E extends Edit = Edit> = CustomEvent<E>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isEdit(edit: any): edit is Edit {
-  if (isComplex(edit)) return !edit.some(e => !isEdit(e));
+  if (isComplex(edit)) {
+    return !edit.some(e => !isEdit(e));
+  }
 
   return (
     !isSetAttributes(edit) &&

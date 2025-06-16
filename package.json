@@ -7,7 +7,7 @@
   "types": "./dist/oscd-api.d.ts",
   "scripts": {
     "lint": "eslint . && prettier \"**/*.ts\" --check --ignore-path .gitignore",
-    "format": "eslint . --fix && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "format": "eslint ./*.ts --fix",
     "test": "npm run build && wtr --coverage",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
     "build": "npx rimraf dist && tsc --pretty",
@@ -48,6 +48,7 @@
     "concurrently": "^9.0.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-tsdoc": "^0.4.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
@@ -66,11 +67,14 @@
     },
     "extends": [
       "@open-wc",
-      "prettier"
+      "prettier",
+      "plugin:prettier/recommended"
     ],
     "ignorePatterns": [
-      "*/**/*.js",
-      "*/**/*.d.ts"
+      "dist/",
+      "node_modules",
+      "coverage",
+      "doc"
     ],
     "plugins": [
       "@typescript-eslint",
@@ -141,7 +145,8 @@
   "lint-staged": {
     "*.ts": [
       "eslint --fix --config package.json",
-      "prettier --write"
+      "prettier --write",
+      "eslint --config package.json"
     ]
   }
 }
