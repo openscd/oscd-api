@@ -3,8 +3,16 @@
   "version": "0.0.14",
   "description": "OpenSCD API for IEC 61850 SCL files",
   "type": "module",
-  "main": "./dist/oscd-api.js",
-  "types": "./dist/oscd-api.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/oscd-api.js",
+      "types": "./dist/oscd-api.d.ts"
+    },
+    "./utils.js": {
+      "default": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
+    }
+  },
   "scripts": {
     "lint": "eslint . && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint ./*.ts --fix",
