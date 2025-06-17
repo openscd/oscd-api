@@ -52,20 +52,20 @@ Plugins communicate user intent to OpenSCD core by dispatching the following [cu
 The **edit event** allows a plugin to describe the changes it wants to make to the current `doc`.
 
 ```typescript
-export type EditDetailV2<E extends Edit = Edit> = {
+export type EditDetailV2<E extends EditV2 = EditV2> = {
   edit: E;
   title?: string;
   squash?: boolean;
 }
 
-export type EditEventV2<E extends Edit = Edit> = CustomEvent<EditDetailV2<E>>;
+export type EditEventV2<E extends EditV2 = EditV2> = CustomEvent<EditDetailV2<E>>;
 
 export type EditEventOptions = {
   title?: string;
   squash?: boolean;
 }
 
-export function newEditEventV2<E extends Edit>(edit: E, options: EditEventOptions): EditEventV2<E> {
+export function newEditEventV2<E extends EditV2>(edit: E, options: EditEventOptions): EditEventV2<E> {
   return new CustomEvent<E>('oscd-edit-v2', {
     composed: true,
     bubbles: true,
@@ -84,7 +84,7 @@ Its `title` property is a human-readable description of the edit.
 
 The `squash` flag indicates whether the edit should be merged with the previous edit in the history.
 
-#### `Edit` type
+#### `EditV2` type
 The `EditDetailV2` defined above contains an `edit` of this type:
 
 ```typescript
@@ -149,86 +149,6 @@ export function newOpenEvent(doc: XMLDocument, docName: string): OpenEvent {
 declare global {
   interface ElementEventMap {
     ['oscd-open']: OpenEvent;
-  }
-}
-```
-
-### `WizardEvent`
-
-The **wizard event** allows the plugin to request opening a modal dialog enabling the user to edit an arbitrary SCL `element`, regardless of how the dialog for editing this particular type of element looks and works.
-
-```typescript
-/* eslint-disable no-undef */
-interface WizardRequestBase {
-  subWizard?: boolean; // TODO: describe what this currently means
-}
-
-export interface EditWizardRequest extends WizardRequestBase {
-  element: Element;
-}
-
-export interface CreateWizardRequest extends WizardRequestBase {
-  parent: Element;
-  tagName: string;
-}
-
-export type WizardRequest = EditWizardRequest | CreateWizardRequest;
-
-type EditWizardEvent = CustomEvent<EditWizardRequest>;
-type CreateWizardEvent = CustomEvent<CreateWizardRequest>;
-export type WizardEvent = EditWizardEvent | CreateWizardEvent;
-
-type CloseWizardEvent = CustomEvent<WizardRequest>;
-
-export function newEditWizardEvent(
-  element: Element,
-  subWizard?: boolean,
-  eventInitDict?: CustomEventInit<Partial<EditWizardRequest>>
-): EditWizardEvent {
-  return new CustomEvent<EditWizardRequest>('oscd-edit-wizard-request', {
-    bubbles: true,
-    composed: true,
-    ...eventInitDict,
-    detail: { element, subWizard, ...eventInitDict?.detail },
-  });
-}
-
-export function newCreateWizardEvent(
-  parent: Element,
-  tagName: string,
-  subWizard?: boolean,
-  eventInitDict?: CustomEventInit<Partial<CreateWizardRequest>>
-): CreateWizardEvent {
-  return new CustomEvent<CreateWizardRequest>('oscd-create-wizard-request', {
-    bubbles: true,
-    composed: true,
-    ...eventInitDict,
-    detail: {
-      parent,
-      tagName,
-      subWizard,
-      ...eventInitDict?.detail,
-    },
-  });
-}
-
-export function newCloseWizardEvent(
-  wizard: WizardRequest,
-  eventInitDict?: CustomEventInit<Partial<WizardRequest>>
-): CloseWizardEvent {
-  return new CustomEvent<WizardRequest>('oscd-close-wizard', {
-    bubbles: true,
-    composed: true,
-    ...eventInitDict,
-    detail: wizard,
-  });
-}
-
-declare global {
-  interface ElementEventMap {
-    ['oscd-edit-wizard-request']: EditWizardRequest;
-    ['oscd-create-wizard-request']: CreateWizardRequest;
-    ['oscd-close-wizard']: WizardEvent;
   }
 }
 ```
