@@ -28,3 +28,5 @@ export type {
   EditEventOptions,
   EditEventV2,
 } from './edit-event.js';
+
+export type { OpenDetail, OpenEvent } from './open-event.js';
