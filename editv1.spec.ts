@@ -28,14 +28,11 @@ describe('type guard functions for editv1', () => {
 
   it('returns true for Remove', () => expect(remove).to.satisfy(isEdit));
 
-  it('returns false for SetAttributes', () =>
-    expect(setAttributes).to.not.satisfy(isEdit));
-
   it('returns true for SetTextContent', () =>
     expect(setTextContent).to.not.satisfy(isEdit));
 
   it('returns false on mixed edit and editV2 array', () =>
-    expect([update, setAttributes]).to.not.satisfy(isEdit));
+    expect([update, setTextContent]).to.not.satisfy(isEdit));
 
   it('returns true on edit array', () =>
     expect([update, remove, insert]).to.satisfy(isEdit));

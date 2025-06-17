@@ -19,16 +19,16 @@ const insert: Insert = { parent: element, node: element, reference: null };
 const remove: Remove = { node: element };
 const setAttributes: SetAttributes = {
   element,
-  attributes: {},
-  attributesNS: {},
+  attributes: { name: 'value' },
+  attributesNS: { namespaceURI: { name: 'value' } },
 };
 const setTextContent: SetTextContent = { element, textContent: '' };
 
-describe('type guard functions for editv2', () => {
-  it('returns false on invalid Edit type', () =>
+describe('isEditV2', () => {
+  it('returns false for invalid Edit type', () =>
     expect('invalid edit').to.not.satisfy(isEditV2));
 
-  it('returns false on Update', () => expect(update).to.not.satisfy(isEditV2));
+  it('returns false for Update', () => expect(update).to.not.satisfy(isEditV2));
 
   it('returns true for Insert', () => expect(insert).to.satisfy(isEditV2));
 
@@ -40,13 +40,13 @@ describe('type guard functions for editv2', () => {
   it('returns true for SetTextContent', () =>
     expect(setTextContent).to.satisfy(isEditV2));
 
-  it('returns false on mixed edit and editV2 array', () =>
+  it('returns false for a mixed edit and editV2 array', () =>
     expect([update, setAttributes]).to.not.satisfy(isEditV2));
 
-  it('returns false on edit array', () =>
+  it('returns false for edit array', () =>
     expect([update, update]).to.not.satisfy(isEditV2));
 
-  it('returns true on editV2 array', () =>
+  it('returns true for editV2 array', () =>
     expect([setAttributes, remove, insert, setTextContent]).to.satisfy(
       isEditV2,
     ));

@@ -1,68 +1,67 @@
-import { isSetAttributes } from './editv2.js';
-
-/** Intent to `parent.insertBefore(node, reference)` */
-export type Insert = {
-  parent: Node;
-  node: Node;
-  reference: Node | null;
-};
+import { isInsert, isRemove, Insert, Remove } from './editv2.js';
 
 export type NamespacedAttributeValue = {
   value: string | null;
   namespaceURI: string | null;
 };
+
 export type AttributeValue = string | null | NamespacedAttributeValue;
+
+export type AttributesV1 = Partial<Record<string, AttributeValue>>;
+
 /** Intent to set or remove (if null) attributes on element */
 export type Update = {
   element: Element;
   attributes: Partial<Record<string, AttributeValue>>;
 };
 
-/** Intent to remove a node from its ownerDocument */
-export type Remove = {
-  node: Node;
-};
-
 /** Represents the user's intent to change an XMLDocument */
 export type Edit = Insert | Update | Remove | Edit[];
 
-export function isComplex(edit: Edit): edit is Edit[] {
-  return edit instanceof Array;
-}
-
-export function isInsert(edit: Edit): edit is Insert {
-  return (edit as Insert).parent !== undefined;
-}
-
 export function isNamespaced(
-  value: AttributeValue,
+  value: unknown,
 ): value is NamespacedAttributeValue {
-  return value !== null && typeof value !== 'string';
-}
-
-export function isUpdate(edit: Edit): edit is Update {
   return (
-    (edit as Update).element !== undefined &&
-    (edit as Update).attributes !== undefined
+    value !== null &&
+    typeof value === 'object' &&
+    'namespaceURI' in value &&
+    typeof value.namespaceURI === 'string' &&
+    'value' in value &&
+    typeof value.value === 'string'
   );
 }
 
-export function isRemove(edit: Edit): edit is Remove {
+export function isAttributesV1(
+  attributes: unknown,
+): attributes is AttributesV1 {
+  if (attributes === null || typeof attributes !== 'object') {
+    return false;
+  }
+
+  return Object.entries(attributes).every(
+    ([key, value]) =>
+      typeof key === 'string' &&
+      (value === null || typeof value === 'string' || isNamespaced(value)),
+  );
+}
+
+export function isComplex(edit: unknown): edit is Edit[] {
+  return edit instanceof Array && edit.every(isEdit);
+}
+
+export function isUpdate(edit: unknown): edit is Update {
   return (
-    (edit as Insert).parent === undefined && (edit as Remove).node !== undefined
+    (edit as Update).element instanceof Element &&
+    isAttributesV1((edit as Update).attributes)
   );
 }
 
 export type EditEvent<E extends Edit = Edit> = CustomEvent<E>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isEdit(edit: any): edit is Edit {
+export function isEdit(edit: unknown): edit is Edit {
   if (isComplex(edit)) {
-    return !edit.some(e => !isEdit(e));
+    return true;
   }
 
-  return (
-    !isSetAttributes(edit) &&
-    (isUpdate(edit) || isInsert(edit) || isRemove(edit))
-  );
+  return isUpdate(edit) || isInsert(edit) || isRemove(edit);
 }
