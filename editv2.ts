@@ -16,15 +16,17 @@ export type SetTextContent = {
   textContent: string;
 };
 
+/** Record from attribute names to attribute values */
 export type Attributes = Partial<Record<string, string | null>>;
 
+/** Record from namespace URIs to `Attributes` records */
 export type AttributesNS = Partial<Record<string, Attributes>>;
 
 /** Intent to set or remove (if `null`) `attributes`(-`NS`) on `element` */
 export type SetAttributes = {
   element: Element;
-  attributes: Partial<Record<string, string | null>>;
-  attributesNS: Partial<Record<string, Partial<Record<string, string | null>>>>;
+  attributes: Attributes;
+  attributesNS: AttributesNS;
 };
 
 /** Intent to change some XMLDocuments */
