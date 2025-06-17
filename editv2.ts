@@ -58,7 +58,7 @@ export function isAttributesNS(
   );
 }
 
-export function isComplex(edit: unknown): edit is EditV2[] {
+export function isComplexEditV2(edit: unknown): edit is EditV2[] {
   return edit instanceof Array && edit.every(e => isEditV2(e));
 }
 
@@ -96,7 +96,7 @@ export function isInsert(edit: unknown): edit is Insert {
 }
 
 export function isEditV2(edit: unknown): edit is EditV2 {
-  if (isComplex(edit)) {
+  if (isComplexEditV2(edit)) {
     return true;
   }
 

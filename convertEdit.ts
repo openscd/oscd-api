@@ -1,4 +1,10 @@
-import { Edit, isComplex, isNamespaced, isUpdate, Update } from './editv1.js';
+import {
+  Edit,
+  isComplexEdit,
+  isNamespaced,
+  isUpdate,
+  Update,
+} from './editv1.js';
 
 import {
   Attributes,
@@ -41,7 +47,7 @@ export function convertEdit(edit: Edit): EditV2 {
   if (isUpdate(edit)) {
     return convertUpdate(edit);
   }
-  if (isComplex(edit)) {
+  if (isComplexEdit(edit)) {
     return edit.map(convertEdit);
   }
 

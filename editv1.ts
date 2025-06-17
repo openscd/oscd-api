@@ -45,7 +45,7 @@ export function isAttributesV1(
   );
 }
 
-export function isComplex(edit: unknown): edit is Edit[] {
+export function isComplexEdit(edit: unknown): edit is Edit[] {
   return edit instanceof Array && edit.every(isEdit);
 }
 
@@ -56,10 +56,8 @@ export function isUpdate(edit: unknown): edit is Update {
   );
 }
 
-export type EditEvent<E extends Edit = Edit> = CustomEvent<E>;
-
 export function isEdit(edit: unknown): edit is Edit {
-  if (isComplex(edit)) {
+  if (isComplexEdit(edit)) {
     return true;
   }
 
