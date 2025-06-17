@@ -86,6 +86,7 @@
     ],
     "rules": {
       "no-unused-vars": "off",
+      "no-use-before-define": "off",
       "class-methods-use-this": [
         "error",
         {

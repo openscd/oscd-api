@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { expect } from '@open-wc/testing';
 
-import { Insert, Remove, Update } from './editv1.js';
+import { Update } from './editv1.js';
 
 import { convertEdit } from './convertEdit.js';
-import { SetAttributes } from './editv2.js';
+import { Insert, Remove, SetAttributes } from './editv2.js';
 
 const doc = new DOMParser().parseFromString(
   '<SCL><Substation name="AA1"></Substation></SCL>',
@@ -26,7 +26,6 @@ const update: Update = {
   attributes: {
     name: 'A2',
     desc: null,
-    ['__proto__']: 'a string',
     'myns:attr': {
       value: 'value1',
       namespaceURI: 'http://example.org/myns',
@@ -43,9 +42,9 @@ const update: Update = {
       value: 'value2',
       namespaceURI: 'http://example.org/myns2',
     },
-    attr3: {
-      value: 'value3',
-      namespaceURI: null,
+    invalid: {
+      value: 'great, but with empty namespace URI',
+      namespaceURI: '',
     },
   },
 };

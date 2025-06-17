@@ -1,20 +1,16 @@
-import {
-  Edit,
-  isComplex,
-  isInsert,
-  isNamespaced,
-  isUpdate,
-  isRemove,
-  Update,
-} from './editv1.js';
+import { Edit, isComplex, isNamespaced, isUpdate, Update } from './editv1.js';
 
-import { EditV2 } from './editv2.js';
+import {
+  Attributes,
+  AttributesNS,
+  EditV2,
+  isInsert,
+  isRemove,
+} from './editv2.js';
 
 function convertUpdate(edit: Update): EditV2 {
-  const attributes: Partial<Record<string, string | null>> = {};
-  const attributesNS: Partial<
-    Record<string, Partial<Record<string, string | null>>>
-  > = {};
+  const attributes: Attributes = {};
+  const attributesNS: AttributesNS = {};
 
   Object.entries(edit.attributes).forEach(([key, value]) => {
     if (isNamespaced(value!)) {

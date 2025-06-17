@@ -16,6 +16,10 @@ export type SetTextContent = {
   textContent: string;
 };
 
+export type Attributes = Partial<Record<string, string | null>>;
+
+export type AttributesNS = Partial<Record<string, Attributes>>;
+
 /** Intent to set or remove (if `null`) `attributes`(-`NS`) on `element` */
 export type SetAttributes = {
   element: Element;
@@ -31,43 +35,69 @@ export type EditV2 =
   | Remove
   | EditV2[];
 
-export function isComplex(edit: EditV2): edit is EditV2[] {
-  return edit instanceof Array;
-}
-
-export function isSetTextContent(edit: EditV2): edit is SetTextContent {
-  return (
-    (edit as SetTextContent).element !== undefined &&
-    (edit as SetTextContent).textContent !== undefined
+export function isAttributes(attributes: unknown): attributes is Attributes {
+  if (typeof attributes !== 'object' || attributes === null) {
+    return false;
+  }
+  return Object.entries(attributes).every(
+    ([key, value]) =>
+      typeof key === 'string' && (value === null || typeof value === 'string'),
   );
 }
 
-export function isRemove(edit: EditV2): edit is Remove {
-  return (
-    (edit as Insert).parent === undefined && (edit as Remove).node !== undefined
+export function isAttributesNS(
+  attributesNS: unknown,
+): attributesNS is AttributesNS {
+  if (typeof attributesNS !== 'object' || attributesNS === null) {
+    return false;
+  }
+  return Object.entries(attributesNS).every(
+    ([namespace, attributes]) =>
+      typeof namespace === 'string' &&
+      isAttributes(attributes as Record<string, string | null>),
   );
 }
 
-export function isSetAttributes(edit: EditV2): edit is SetAttributes {
+export function isComplex(edit: unknown): edit is EditV2[] {
+  return edit instanceof Array && edit.every(e => isEditV2(e));
+}
+
+export function isSetTextContent(edit: unknown): edit is SetTextContent {
   return (
-    (edit as SetAttributes).element !== undefined &&
-    (edit as SetAttributes).attributes !== undefined &&
-    (edit as SetAttributes).attributesNS !== undefined
+    (edit as SetTextContent).element instanceof Element &&
+    typeof (edit as SetTextContent).textContent === 'string'
   );
 }
 
-export function isInsert(edit: EditV2): edit is Insert {
+export function isRemove(edit: unknown): edit is Remove {
   return (
-    (edit as Insert).parent !== undefined &&
-    (edit as Insert).node !== undefined &&
-    (edit as Insert).reference !== undefined
+    (edit as Insert).parent === undefined &&
+    (edit as Remove).node instanceof Node
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isEditV2(edit: any): edit is EditV2 {
+export function isSetAttributes(edit: unknown): edit is SetAttributes {
+  return (
+    (edit as SetAttributes).element instanceof Element &&
+    isAttributes((edit as SetAttributes).attributes) &&
+    isAttributesNS((edit as SetAttributes).attributesNS)
+  );
+}
+
+export function isInsert(edit: unknown): edit is Insert {
+  return (
+    ((edit as Insert).parent instanceof Element ||
+      (edit as Insert).parent instanceof Document ||
+      (edit as Insert).parent instanceof DocumentFragment) &&
+    (edit as Insert).node instanceof Node &&
+    ((edit as Insert).reference instanceof Node ||
+      (edit as Insert).reference === null)
+  );
+}
+
+export function isEditV2(edit: unknown): edit is EditV2 {
   if (isComplex(edit)) {
-    return !edit.some(e => !isEditV2(e));
+    return true;
   }
 
   return (
