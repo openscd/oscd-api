@@ -20,3 +20,5 @@ export {
 export { convertEdit } from './convertEdit.js';
 
 export { newEditEventV2 } from './edit-event.js';
+
+export { newOpenEvent } from './open-event.js';
