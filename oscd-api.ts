@@ -1,5 +1,5 @@
 export type {
-  Attributes,
+  AttributesV2,
   AttributesNS,
   EditV2,
   Insert,
@@ -9,7 +9,7 @@ export type {
 } from './editv2.js';
 
 export type {
-  AttributesV1,
+  Attributes,
   AttributeValue,
   Edit,
   NamespacedAttributeValue,

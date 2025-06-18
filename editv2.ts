@@ -17,16 +17,16 @@ export type SetTextContent = {
 };
 
 /** Record from attribute names to attribute values */
-export type Attributes = Partial<Record<string, string | null>>;
+export type AttributesV2 = Partial<Record<string, string | null>>;
 
 /** Record from namespace URIs to `Attributes` records */
-export type AttributesNS = Partial<Record<string, Attributes>>;
+export type AttributesNS = Partial<Record<string, AttributesV2>>;
 
 /** Intent to set or remove (if `null`) `attributes`(-`NS`) on `element` */
 export type SetAttributes = {
   element: Element;
-  attributes: Attributes;
-  attributesNS: AttributesNS;
+  attributes?: AttributesV2;
+  attributesNS?: AttributesNS;
 };
 
 /** Intent to change some XMLDocuments */
@@ -37,7 +37,9 @@ export type EditV2 =
   | Remove
   | EditV2[];
 
-export function isAttributes(attributes: unknown): attributes is Attributes {
+export function isAttributesV2(
+  attributes: unknown,
+): attributes is AttributesV2 {
   if (typeof attributes !== 'object' || attributes === null) {
     return false;
   }
@@ -56,7 +58,7 @@ export function isAttributesNS(
   return Object.entries(attributesNS).every(
     ([namespace, attributes]) =>
       typeof namespace === 'string' &&
-      isAttributes(attributes as Record<string, string | null>),
+      isAttributesV2(attributes as Record<string, string | null>),
   );
 }
 
@@ -81,7 +83,7 @@ export function isRemove(edit: unknown): edit is Remove {
 export function isSetAttributes(edit: unknown): edit is SetAttributes {
   return (
     (edit as SetAttributes).element instanceof Element &&
-    isAttributes((edit as SetAttributes).attributes) &&
+    isAttributesV2((edit as SetAttributes).attributes) &&
     isAttributesNS((edit as SetAttributes).attributesNS)
   );
 }
