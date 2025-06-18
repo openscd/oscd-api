@@ -1,5 +1,5 @@
 export {
-  isAttributes,
+  isAttributesV2,
   isAttributesNS,
   isComplexEditV2,
   isEditV2,
@@ -10,7 +10,7 @@ export {
 } from './editv2.js';
 
 export {
-  isAttributesV1,
+  isAttributes,
   isComplexEdit,
   isEdit,
   isNamespaced,

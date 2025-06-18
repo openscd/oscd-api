@@ -7,7 +7,7 @@ export type NamespacedAttributeValue = {
 
 export type AttributeValue = string | null | NamespacedAttributeValue;
 
-export type AttributesV1 = Partial<Record<string, AttributeValue>>;
+export type Attributes = Partial<Record<string, AttributeValue>>;
 
 /** Intent to set or remove (if null) attributes on element */
 export type Update = {
@@ -31,9 +31,7 @@ export function isNamespaced(
   );
 }
 
-export function isAttributesV1(
-  attributes: unknown,
-): attributes is AttributesV1 {
+export function isAttributes(attributes: unknown): attributes is Attributes {
   if (attributes === null || typeof attributes !== 'object') {
     return false;
   }
@@ -52,7 +50,7 @@ export function isComplexEdit(edit: unknown): edit is Edit[] {
 export function isUpdate(edit: unknown): edit is Update {
   return (
     (edit as Update).element instanceof Element &&
-    isAttributesV1((edit as Update).attributes)
+    isAttributes((edit as Update).attributes)
   );
 }
 

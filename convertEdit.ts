@@ -7,7 +7,7 @@ import {
 } from './editv1.js';
 
 import {
-  Attributes,
+  AttributesV2,
   AttributesNS,
   EditV2,
   isInsert,
@@ -15,7 +15,7 @@ import {
 } from './editv2.js';
 
 function convertUpdate(edit: Update): EditV2 {
-  const attributes: Attributes = {};
+  const attributes: AttributesV2 = {};
   const attributesNS: AttributesNS = {};
 
   Object.entries(edit.attributes).forEach(([key, value]) => {
