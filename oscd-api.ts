@@ -23,10 +23,12 @@ export type {
   TransactedCallback,
 } from './Transactor.js';
 
+export type { EditEvent } from './edit-event.js';
+
 export type {
   EditDetailV2,
   EditEventOptions,
   EditEventV2,
-} from './edit-event.js';
+} from './edit-event-v2.js';
 
 export type { OpenDetail, OpenEvent } from './open-event.js';
