@@ -19,6 +19,8 @@ export {
 
 export { convertEdit } from './convertEdit.js';
 
-export { newEditEventV2 } from './edit-event.js';
+export { newEditEvent } from './edit-event.js';
+
+export { newEditEventV2 } from './edit-event-v2.js';
 
 export { newOpenEvent } from './open-event.js';
