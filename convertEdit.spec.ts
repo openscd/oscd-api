@@ -26,6 +26,7 @@ const update: Update = {
   attributes: {
     name: 'A2',
     desc: null,
+    ['__proto__']: 'a string',
     'myns:attr': {
       value: 'value1',
       namespaceURI: 'http://example.org/myns',
@@ -54,6 +55,7 @@ const setAttributes: SetAttributes = {
   attributes: {
     name: 'A2',
     desc: null,
+    ['__proto__']: 'a string',
   },
   attributesNS: {
     'http://example.org/myns': {

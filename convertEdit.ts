@@ -15,7 +15,7 @@ import {
 } from './editv2.js';
 
 function convertUpdate(edit: Update): EditV2 {
-  const attributes: AttributesV2 = {};
+  let attributes: AttributesV2 = {};
   const attributesNS: AttributesNS = {};
 
   Object.entries(edit.attributes).forEach(([key, value]) => {
@@ -28,9 +28,9 @@ function convertUpdate(edit: Update): EditV2 {
       if (!attributesNS[ns]) {
         attributesNS[ns] = {};
       }
-      attributesNS[ns][key] = value.value;
+      attributesNS[ns] = { ...attributesNS[ns], [key]: value.value };
     } else {
-      attributes[key] = value;
+      attributes = { ...attributes, [key]: value };
     }
   });
 
