@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.1.0](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.14...oscd-api-v0.1.0) (2025-06-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **package:** move utils to separate module
+
+### Features
+
+* add edit-event from V1 API ([07230e3](https://github.com/OMICRONEnergyOSS/oscd-api/commit/07230e352ad616df98c50df66e5701fe70fcfac9))
+* add OpenEvent ([af43dbe](https://github.com/OMICRONEnergyOSS/oscd-api/commit/af43dbe5d681de31e81bbf0be5b60079ce2112f3))
+
+
+### Bug Fixes
+
+* **convertEdit:** allow '__proto__' attribute name ([16c541f](https://github.com/OMICRONEnergyOSS/oscd-api/commit/16c541fd2f856f05373e771c97ee8a881fe3e7b9))
+* expose missing module members ([477f11c](https://github.com/OMICRONEnergyOSS/oscd-api/commit/477f11c4ef337b9763a933c5f087303c7f6599f0))
+* increase type guard vigilance ([5404d79](https://github.com/OMICRONEnergyOSS/oscd-api/commit/5404d796c683488db2cc145f6d6ceb2888ffa94d))
+
+
+### Code Refactoring
+
+* **package:** move utils to separate module ([b1e5c51](https://github.com/OMICRONEnergyOSS/oscd-api/commit/b1e5c51e233cf0f4627ba5b6bc69cb58041647d0))
+
 ## [0.0.14](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.13...oscd-api-v0.0.14) (2025-06-16)
 
 
