@@ -4,6 +4,11 @@ node_modules
 *.d.ts
 *.tsbuildinfo
 !commitlint.config.js
+!commitlint.config.mjs
+!eslint.config.js
+!eslint.config.mjs
+!web-test-runner.config.js
+!web-test-runner.config.mjs
 
 ## editors
 /.idea
