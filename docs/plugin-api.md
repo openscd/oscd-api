@@ -172,6 +172,8 @@ OpenSCD core sets the following CSS variables on the plugin:
   --oscd-base2: var(--oscd-theme-base2, #eee8d5);
   --oscd-base3: var(--oscd-theme-base3, #fdf6e3);
 
+  --oscd-shape: var(--oscd-theme-shape, 8px);
+
   --oscd-text-font: var(--oscd-theme-text-font, 'Roboto');
   --oscd-text-font-mono: var(--oscd-theme-text-font-mono, 'Roboto Mono');
   --oscd-icon-font: var(--oscd-theme-icon-font, 'Material Icons');
