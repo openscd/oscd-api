@@ -14,7 +14,12 @@ const element = new DOMParser().parseFromString(
   'application/xml',
 )!.documentElement;
 
-const update: Update = { element, attributes: {} };
+const update: Update = {
+  element,
+  attributes: {
+    attr1: { namespaceURI: 'http://myns.com', value: 'new value' },
+  },
+};
 const insert: Insert = { parent: element, node: element, reference: null };
 const remove: Remove = { node: element };
 const setAttributes: SetAttributes = {
