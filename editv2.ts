@@ -81,10 +81,11 @@ export function isRemove(edit: unknown): edit is Remove {
 }
 
 export function isSetAttributes(edit: unknown): edit is SetAttributes {
+  const setAttrs = edit as SetAttributes;
   return (
-    (edit as SetAttributes).element instanceof Element &&
-    isAttributesV2((edit as SetAttributes).attributes) &&
-    isAttributesNS((edit as SetAttributes).attributesNS)
+    setAttrs.element instanceof Element &&
+    (isAttributesV2(setAttrs.attributes) ||
+      isAttributesNS(setAttrs.attributesNS))
   );
 }
 

@@ -82,9 +82,9 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --fix --config package.json",
+      "eslint --fix",
       "prettier --write",
-      "eslint --config package.json"
+      "eslint"
     ]
   }
 }
