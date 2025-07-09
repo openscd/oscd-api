@@ -4,11 +4,18 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Set CHROME_PATH
+        run: echo "CHROME_PATH=/ms-playwright/chrome-linux/chrome" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup-node-env
+
+      - name: Run ESLint checks
+        run: npm run-script lint
 
       - name: Build
         run: npm run-script build
