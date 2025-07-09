@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.1.0...oscd-api-v0.1.1) (2025-07-09)
+
+
+### Bug Fixes
+
+* isSetAttribute to allow attr OR attrNS ([de6ed66](https://github.com/OMICRONEnergyOSS/oscd-api/commit/de6ed66453f26415f6cc5c6e332e7a1b8bb647d0))
+
 ## [0.1.0](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.0.14...oscd-api-v0.1.0) (2025-06-18)
 
 
