@@ -9,6 +9,7 @@
 An **OpenSCD plugin** is a [custom element](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#implementing_a_custom_element) that has been registered in the global [`customElements`](https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements) registry under some tag name. OpenSCD core renders an element with that tag name into the app. The component may optionally provide a `run()` method for OpenSCD core to call in order to trigger an action.
 
 The **OpenSCD core API** describes the ways in which:
+
 - OpenSCD core communicates relevant data to the plugins,
 - plugins communicate user intent to OpenSCD core, and
 - OpenSCD sets CSS fonts and colors for plugins.
@@ -17,14 +18,13 @@ The **OpenSCD core API** describes the ways in which:
 
 OpenSCD core communicates the data necessary for editing SCL documents by setting the following [properties](https://developer.mozilla.org/en-US/docs/Glossary/Property/JavaScript) on the plugin's [DOM Element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement):
 
-
 ```typescript
 export default class MyPlugin extends HTMLElement {
   editor: Transactor<EditV2>;
   docs: Record<string, XMLDocument> = {}; // all loaded documents
   doc?: XMLDocument; // the document currently being edited
   docName?: string; // the current doc's name
-  docVersion: unknown; // current doc's state indicator
+  docsState: unknown; // changes value when the document is modified or documents are added/removed.
   locale: string = 'en'; // the end user's chosen locale
 }
 ```
@@ -46,8 +46,9 @@ The name of the `XMLDocument` currently being edited.
 
 The `XMLDocument` currently being edited.
 
-### `docVersion`
-A change in this property's value indicates a change to the `doc`.
+### `docsState`
+
+A value which changes with edits to the current document AND when documents are opened or closed.
 
 ### `locale`
 
