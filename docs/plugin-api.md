@@ -20,6 +20,7 @@ OpenSCD core communicates the data necessary for editing SCL documents by settin
 
 ```typescript
 export default class MyPlugin extends HTMLElement {
+  editor: Transactor<EditV2>;
   docs: Record<string, XMLDocument> = {}; // all loaded documents
   doc?: XMLDocument; // the document currently being edited
   docName?: string; // the current doc's name
@@ -28,19 +29,28 @@ export default class MyPlugin extends HTMLElement {
 }
 ```
 
+### `editor`
+
+`editor` provides a reference to the central editor class used for modifying SCL documents. For
+more details on the Transactor<EditV2> (Defaults to XMLEditor). For more on the XMLEditor checkout the [documentation](https://github.com/OMICRONEnergyOSS/oscd-editor)
+
 ### `docs`
+
 `docs` is set to an object mapping `string` keys (document names) to `XMLDocument` values.
 
 ### `docName`
+
 The name of the `XMLDocument` currently being edited.
 
 ### `doc`
+
 The `XMLDocument` currently being edited.
 
 ### `docVersion`
 A change in this property's value indicates a change to the `doc`.
 
 ### `locale`
+
 Selected language (IETF language tag).
 
 ## Communicating user intent to OpenSCD core
@@ -56,20 +66,25 @@ export type EditDetailV2<E extends EditV2 = EditV2> = {
   edit: E;
   title?: string;
   squash?: boolean;
-}
+};
 
-export type EditEventV2<E extends EditV2 = EditV2> = CustomEvent<EditDetailV2<E>>;
+export type EditEventV2<E extends EditV2 = EditV2> = CustomEvent<
+  EditDetailV2<E>
+>;
 
 export type EditEventOptions = {
   title?: string;
   squash?: boolean;
-}
+};
 
-export function newEditEventV2<E extends EditV2>(edit: E, options: EditEventOptions): EditEventV2<E> {
+export function newEditEventV2<E extends EditV2>(
+  edit: E,
+  options: EditEventOptions,
+): EditEventV2<E> {
   return new CustomEvent<E>('oscd-edit-v2', {
     composed: true,
     bubbles: true,
-    detail: {...options, edit},
+    detail: { ...options, edit },
   });
 }
 
@@ -85,15 +100,22 @@ Its `title` property is a human-readable description of the edit.
 The `squash` flag indicates whether the edit should be merged with the previous edit in the history.
 
 #### `EditV2` type
+
 The `EditDetailV2` defined above contains an `edit` of this type:
 
 ```typescript
-export type EditV2 = Insert | SetAttributes | SetTextContent | Remove | EditV2[];
+export type EditV2 =
+  | Insert
+  | SetAttributes
+  | SetTextContent
+  | Remove
+  | EditV2[];
 ```
 
 This means that a single edit can either consist in a sequence of other edits or in one of the following atomic edit types:
 
 > Intent to set or remove (if null) attributes on `element`.
+
 ```typescript
 export type SetAttributes = {
   element: Element;
@@ -103,6 +125,7 @@ export type SetAttributes = {
 ```
 
 > Intent to set the `textContent` of `element`.
+
 ```typescript
 export type SetTextContent = {
   element: Element;
@@ -111,6 +134,7 @@ export type SetTextContent = {
 ```
 
 > Intent to `parent.insertBefore(node, reference)`
+
 ```typescript
 export type Insert = {
   parent: Node;
@@ -120,6 +144,7 @@ export type Insert = {
 ```
 
 > Intent to remove a `node` from its `ownerDocument`.
+
 ```typescript
 export type Remove = {
   node: Node;
