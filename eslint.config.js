@@ -6,6 +6,7 @@ import js from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintPluginTSDoc from 'eslint-plugin-tsdoc';
 import openWcConfig from '@open-wc/eslint-config';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -86,4 +87,5 @@ export default [
       ],
     },
   },
+  eslintPluginPrettierRecommended,
 ];
