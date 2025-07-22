@@ -32,3 +32,5 @@ export type {
 } from './edit-event-v2.js';
 
 export type { OpenDetail, OpenEvent } from './open-event.js';
+
+export type { Plugin } from './Plugin.js';
