@@ -3,7 +3,7 @@ import { Edit } from './editv1.js';
 export type EditEvent<E extends Edit = Edit> = CustomEvent<E>;
 
 export function newEditEvent<E extends Edit>(edit: E): EditEvent<E> {
-  return new CustomEvent<E>('oscd-edit-v2', {
+  return new CustomEvent<E>('oscd-edit', {
     composed: true,
     bubbles: true,
     detail: edit,
