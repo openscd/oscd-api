@@ -9,7 +9,7 @@ import { Transactor } from './Transactor.js';
  * @property docs - A map of document names to their loaded XMLDocument instances.
  * @property doc - The XMLDocument currently being edited, if any.
  * @property docName - The name of the currently edited document, if any.
- * @property docsState - changes value when the document is modified or documents are added/removed.
+ * @property docVersion - changes value when the document is modified.
  * @property locale - The end user's selected locale.
  */
 export interface Plugin {
@@ -17,6 +17,6 @@ export interface Plugin {
   docs: Record<string, XMLDocument>;
   doc?: XMLDocument; // the document currently being edited
   docName?: string; // the current doc's name
-  docsState: unknown; // current doc's state indicator
+  docVersion: unknown; // changes when the document is modified
   locale: string; // the end user's chosen locale
 }

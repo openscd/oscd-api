@@ -24,7 +24,7 @@ export default class MyPlugin extends HTMLElement {
   docs: Record<string, XMLDocument> = {}; // all loaded documents
   doc?: XMLDocument; // the document currently being edited
   docName?: string; // the current doc's name
-  docsState: unknown; // changes value when the document is modified or documents are added/removed.
+  docVersion: unknown; // changes value when the document is modified.
   locale: string = 'en'; // the end user's chosen locale
 }
 ```
@@ -46,9 +46,9 @@ The name of the `XMLDocument` currently being edited.
 
 The `XMLDocument` currently being edited.
 
-### `docsState`
+### `docVersion`
 
-A value which changes with edits to the current document AND when documents are opened or closed.
+A value which changes with edits to the current document.
 
 ### `locale`
 
