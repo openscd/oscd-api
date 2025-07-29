@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.1.2...oscd-api-v0.1.3) (2025-07-29)
+
+
+### Bug Fixes
+
+* edit-event sending oscd-edit-v2 event ([146f2ec](https://github.com/OMICRONEnergyOSS/oscd-api/commit/146f2ecb303b2a7e6a12b2037a08ce154951879b))
+
 ## [0.1.2](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.1.1...oscd-api-v0.1.2) (2025-07-22)
 
 
