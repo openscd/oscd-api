@@ -24,8 +24,8 @@ const insert: Insert = { parent: element, node: element, reference: null };
 const remove: Remove = { node: element };
 const setAttributes: SetAttributes = {
   element,
-  attributes: { name: 'value' },
-  attributesNS: { namespaceURI: { name: 'value' } },
+  attributes: { attrName: 'attrValue' },
+  attributesNS: { myNamespaceURI: { attrName: 'attrValue' } },
 };
 const setTextContent: SetTextContent = { element, textContent: '' };
 
@@ -41,6 +41,24 @@ describe('isEditV2', () => {
 
   it('returns true for SetAttributes', () =>
     expect(setAttributes).to.satisfy(isEditV2));
+
+  it('SetAttributes returns false where Attributes are invalid', () =>
+    expect({
+      element,
+      attributes: 'invalid attr object',
+    }).to.not.satisfy(isEditV2));
+
+  it('SetAttributes returns false where NSAttributes are missing', () =>
+    expect({
+      element,
+      attributesNS: null,
+    }).to.not.satisfy(isEditV2));
+
+  it('SetAttributes returns false if attr namespaced attr is not an object', () =>
+    expect({
+      element,
+      attributesNS: { [1]: 'unacceptable' },
+    }).to.not.satisfy(isEditV2));
 
   it('returns true for SetTextContent', () =>
     expect(setTextContent).to.satisfy(isEditV2));
