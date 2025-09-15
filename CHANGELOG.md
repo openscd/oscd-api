@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.4](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.3...oscd-api-v0.1.4) (2025-09-15)
+
+
+### Features
+
+* move code to /src folder ([e81699b](https://github.com/openscd/oscd-api/commit/e81699b2529b7fbfd94dc7452fe15d5f5b01d36f)), closes [#49](https://github.com/openscd/oscd-api/issues/49)
+* rename project to openscd/oscd-api ([aec1eae](https://github.com/openscd/oscd-api/commit/aec1eaecc15efec47695c486049c88cb5fa54a10)), closes [#51](https://github.com/openscd/oscd-api/issues/51)
+
+
+### Bug Fixes
+
+* change pkg name from @opensc/oscd-api to @openscd/oscd-api ([e21acc5](https://github.com/openscd/oscd-api/commit/e21acc500543d703f56d9dfb26acbe1d914eafcc))
+
 ## [0.1.3](https://github.com/OMICRONEnergyOSS/oscd-api/compare/oscd-api-v0.1.2...oscd-api-v0.1.3) (2025-07-29)
 
 
