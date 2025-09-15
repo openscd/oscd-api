@@ -1,4 +1,4 @@
-[![Tests](https://github.com/openscd/oscd-api/actions/workflows/test.yml/badge.svg)](https://github.com/openscd/oscd-api/actions/workflows/test.yml) ![NPM Version](https://img.shields.io/npm/v/@opensc/oscd-api)
+[![Tests](https://github.com/openscd/oscd-api/actions/workflows/test.yml/badge.svg)](https://github.com/openscd/oscd-api/actions/workflows/test.yml) ![NPM Version](https://img.shields.io/npm/v/@openscd/oscd-api)
 
 # OpenSCD API
 
