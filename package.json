@@ -19,7 +19,7 @@
     "test": "npm run build && wtr --coverage",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
     "build": "npx rimraf dist && tsc --pretty",
-    "doc": "npx rimraf doc && typedoc --out doc oscd-api.ts",
+    "doc": "npx rimraf doc && typedoc --out doc src/oscd-api.ts",
     "prepare": "husky"
   },
   "repository": {
