@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.4...oscd-api-v0.1.5) (2025-09-16)
+
+
+### Bug Fixes
+
+* typedoc should point to src/oscd-api.ts instead of oscd-api.ts ([b009b45](https://github.com/openscd/oscd-api/commit/b009b45c3ea4434940216992b8ece12b47428380))
+
 ## [0.1.4](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.3...oscd-api-v0.1.4) (2025-09-15)
 
 
