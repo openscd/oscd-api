@@ -118,10 +118,17 @@ This means that a single edit can either consist in a sequence of other edits or
 > Intent to set or remove (if null) attributes on `element`.
 
 ```typescript
+/** Record from attribute names to attribute values */
+export type AttributesV2 = Partial<Record<string, string | null>>;
+
+/** Record from namespace URIs to `Attributes` records */
+export type AttributesNS = Partial<Record<string, AttributesV2>>;
+
+/** Intent to set or remove (if `null`) `attributes`(-`NS`) on `element` */
 export type SetAttributes = {
   element: Element;
-  attributes: Partial<Record<string, string | null>>;
-  attributesNS: Partial<Record<string, Partial<Record<string, string | null>>>>;
+  attributes?: AttributesV2;
+  attributesNS?: AttributesNS;
 };
 ```
 
