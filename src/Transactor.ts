@@ -15,6 +15,8 @@ export interface Commit<Change> {
   redo: Change[];
   /** An optional human-readable description of the committed changes */
   title?: string;
+  /** Time of creation (milliseconds from epoch) */
+  time: number;
 }
 export type TransactedCallback<Change> = (txRecord: Commit<Change>) => void;
 /**
