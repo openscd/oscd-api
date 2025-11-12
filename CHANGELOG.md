@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.6](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.5...oscd-api-v0.1.6) (2025-11-12)
+
+
+### Features
+
+* add timestamp to commit definition ([cd90dda](https://github.com/openscd/oscd-api/commit/cd90dda31e0c081ea18cbd71b3b0610052bdcdcb))
+
+
+### Bug Fixes
+
+* update api docs for SetAttribute to show correct sub-types ([cd392e1](https://github.com/openscd/oscd-api/commit/cd392e159997587f2ba3f89d48307220ddbfb599)), closes [#57](https://github.com/openscd/oscd-api/issues/57)
+
 ## [0.1.5](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.4...oscd-api-v0.1.5) (2025-09-16)
 
 
