@@ -212,3 +212,5 @@ OpenSCD core sets the following CSS variables on the plugin:
   --oscd-icon-font: var(--oscd-theme-icon-font, 'Material Icons');
 }
 ```
+
+For more details on theming, please see [Theming Guide](theming.md)
