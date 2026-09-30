@@ -15,7 +15,7 @@ For example, a distro might define a theme variable:
 The plugin can then consume it through an internal variable with a fallback:
 
 ```css
-* {
+:host {
   --oscd-primary: var(--oscd-theme-primary, #2aa198);
 }
 ```
@@ -28,17 +28,17 @@ The base colour names come from Solarized. In general, the negative-numbered bas
 
 | Variable | Typical use |
 | -------- | ----------- |
-| `--oscd-primary` | Primary actions, selected states, and key interactive emphasis |
-| `--oscd-secondary` | Secondary emphasis, supporting actions, and less prominent highlights |
-| `--oscd-error` | Errors, destructive actions, and invalid states |
-| `--oscd-base03` | Darkest background or strongest dark surface |
-| `--oscd-base02` | Dark elevated or highlighted surface |
-| `--oscd-base01` | Muted dark text, borders, or subdued icons |
-| `--oscd-base00` | Secondary text or medium-dark foreground |
-| `--oscd-base0` | Primary body text in dark themes, or muted text in light themes |
-| `--oscd-base1` | Emphasized foreground in dark themes, or subtle foreground in light themes |
-| `--oscd-base2` | Light surface or subtle background |
-| `--oscd-base3` | Lightest background or strongest light surface |
+| `--oscd-theme-primary` | Primary actions, selected states, and key interactive emphasis |
+| `--oscd-theme-secondary` | Secondary emphasis, supporting actions, and less prominent highlights |
+| `--oscd-theme-error` | Errors, destructive actions, and invalid states |
+| `--oscd-theme-base03` | Darkest background or strongest dark surface |
+| `--oscd-theme-base02` | Dark elevated or highlighted surface |
+| `--oscd-theme-base01` | Muted dark text, borders, or subdued icons |
+| `--oscd-theme-base00` | Secondary text or medium-dark foreground |
+| `--oscd-theme-base0` | Primary body text in dark themes, or muted text in light themes |
+| `--oscd-theme-base1` | Emphasized foreground in dark themes, or subtle foreground in light themes |
+| `--oscd-theme-base2` | Light surface or subtle background |
+| `--oscd-theme-base3` | Lightest background or strongest light surface |
 
 For more detail on the palette design and contrast relationships, see the [Solarized documentation](https://ethanschoonover.com/solarized/).
 
@@ -48,19 +48,19 @@ For more detail on the palette design and contrast relationships, see the [Solar
 
 - Set default values for the Material (oscd-ui) components used in the plugin.
 - Initialize "internal" theme colours (`--oscd-*`) by referencing the theme variable (if set), falling back to the reasonable default.
-  E.g. `* { --oscd-primary: var(--oscd-theme-primary, #0b335b); }`
+  E.g. `:host { --oscd-primary: var(--oscd-theme-primary, #0b335b); }`
   Then, in sub-components, just reference the internal palette (`--oscd-*`). You could reference `--oscd-theme-*` but then you need to repeatedly set the same defaults everywhere too.
 - Conventionally, the root component of the plugin would be the single place where variables are set, such that sub-components inherit these values. E.g.:
 
 ```css
-* {
+:host {
   --oscd-primary: var(--oscd-theme-primary, #0b335b);
   --oscd-base2: var(--oscd-theme-base2, #f3f5f6);
   --oscd-text-font: var(--oscd-theme-text-font, 'Roboto');
 }
 
 /* component specific styling example... */
-* {
+:host {
   --md-sys-color-primary: var(--oscd-primary);
   --md-sys-color-on-primary: var(--oscd-base2);
   font-family: var(--oscd-text-font);
@@ -69,7 +69,7 @@ For more detail on the palette design and contrast relationships, see the [Solar
 
 ## Don't
 
-- Don't hardcode values, for example: `* { --md-sys-color-primary: #33FFFF; }`. Hardcoded values make your plugin unthemable.
+- Don't hardcode values, for example: `:host { --md-sys-color-primary: #33FFFF; }`. Hardcoded values make your plugin unthemable.
 - Don't set `--oscd-theme-*` variables inside your plugin - this has the same effect as hardcoding your own values.
 - Don't rely on `--oscd-theme-*` being set for you. The distro will likely set these, but it isn't required, so always provide a fallback default value.
 
@@ -78,7 +78,7 @@ For more detail on the palette design and contrast relationships, see the [Solar
 The following can be dropped into the top of your plugin's root component, removing what isn't needed.
 
 ```css
-* {
+:host {
   --oscd-primary: var(--oscd-theme-primary, #2aa198);
   --oscd-secondary: var(--oscd-theme-secondary, #6c71c4);
   --oscd-error: var(--oscd-theme-error, #dc322f);
