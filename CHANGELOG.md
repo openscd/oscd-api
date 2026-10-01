@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.7](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.6...oscd-api-v0.1.7) (2026-10-01)
+
+
+### Features
+
+* add theming docs ([f8d3a6d](https://github.com/openscd/oscd-api/commit/f8d3a6de7cb2db46c3258d24a412239c53ff946f))
+
+
+### Bug Fixes
+
+* theming minor corrections ([153e3d5](https://github.com/openscd/oscd-api/commit/153e3d5428e44c03305aa40d2894c8440346bde7))
+
 ## [0.1.6](https://github.com/openscd/oscd-api/compare/oscd-api-v0.1.5...oscd-api-v0.1.6) (2025-11-12)
 
 
