@@ -33,4 +33,12 @@ export type {
 
 export type { OpenDetail, OpenEvent } from './open-event.js';
 
-export type { Plugin } from './Plugin.js';
+export type {
+  Bcp47Tag,
+  Plugin,
+  PluginDescriptor,
+  PluginKind,
+  PluginLocale,
+  TranslationTree,
+  ValidatorPluginKind,
+} from './Plugin.js';
