@@ -58,8 +58,8 @@ export type PluginKind = 'menu' | 'editor' | 'background' | ValidatorPluginKind;
  * One plugin, as passed to a plugin that reads {@link Plugin.plugins}.
  *
  * The map key is the tag name and is not repeated here. That key is the
- * plugin's identity. `src` only says where the host loads it from, so the
- * same URL may appear on more than one entry.
+ * plugin's identity. `src` only says where the host loads a plugin from, so
+ * the same URL may appear on more than one entry.
  */
 export interface PluginDescriptor {
   /** US English display name. */
@@ -68,9 +68,14 @@ export interface PluginDescriptor {
   /**
    * URL the host loads this plugin from.
    *
+   * Omit it when the distribution already includes the plugin through an npm
+   * dependency. The host does not fetch a URL in that case. The tag name
+   * remains the identity.
+   *
    * A relative {@link PluginDescriptor.icon} is resolved against this URL.
+   * Without it, a relative icon is resolved against the host URL.
    */
-  src: string;
+  src?: string;
 
   /** US English description of what the plugin does. */
   description?: string;
@@ -78,8 +83,10 @@ export interface PluginDescriptor {
   /**
    * Icon shown for the plugin.
    *
-   * A Material Symbols identifier, an absolute URL, or a path relative to
-   * {@link PluginDescriptor.src}.
+   * A Material Symbols identifier, an absolute URL, or a relative path.
+   * A relative path is resolved against {@link PluginDescriptor.src}. When
+   * `src` is absent, the plugin is part of the host, so the path is resolved
+   * against the host URL instead.
    */
   icon?: string;
 
